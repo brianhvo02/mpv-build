@@ -39,6 +39,16 @@ do_gitmaster()
     )
 }
 
+do_gitmain()
+{
+    set -ex
+    (
+        cd "$1"
+        git checkout origin/main
+        git remote prune origin
+    )
+}
+
 versort_with_prefix()
 {
 	# Emulate sort -V using a known prefix. Filter out anything else.
@@ -81,6 +91,7 @@ checkout()
     fi
 
     case "$branch" in
+        main)    do_gitmain $1;;
         master)  do_gitmaster $1;;
         release) do_releasetag $1;;
         @*)      do_fixedref $1 "${branch#@}";;  # everything after the '@' prefix
@@ -93,7 +104,7 @@ checkout()
 checkout_ffmpeg=master
 checkout_fontconfig=main
 checkout_fribidi=master
-checkout_harfbuzz=master
+checkout_harfbuzz=main
 checkout_libass=master
 checkout_libexpat=master
 checkout_libplacebo=master
@@ -135,12 +146,12 @@ shift
 case "$1" in
     --main)
         checkout_fontconfig="main -"
+        checkout_harfbuzz="main -"
         checkout_sdl="main -"
         ;;
     --master)
         checkout_ffmpeg="master -"
         checkout_fribidi="master -"
-        checkout_harfbuzz="master -"
         checkout_libass="master -"
         checkout_libexpat="master -"
         checkout_libplacebo="master -"
