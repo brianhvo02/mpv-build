@@ -4,17 +4,15 @@ BUILD="$(pwd)"
 newline="
 "
 
-if test -f "$BUILD"/fribidi_options ; then
+if test -f "$BUILD"/libexpat_options ; then
     IFS=$newline
-    set -- $(cat "$BUILD"/fribidi_options) "$@"
+    set -- $(cat "$BUILD"/libexpat_options) "$@"
     unset -v IFS
 fi
 
 OPTIONS="--enable-static --disable-shared"
-if "$BUILD"/scripts/test-libmpv ; then
-    OPTIONS="$OPTIONS --with-pic"
-fi
 
-cd "$BUILD"/fribidi
-./autogen.sh
+cd "$BUILD"/libexpat/expat
+
+./buildconf.sh
 ./configure --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"

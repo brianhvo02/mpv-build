@@ -2,13 +2,24 @@
 set -e
 export LC_ALL=C
 
-#scripts/fribidi-config
-#scripts/fribidi-build "$@"
-scripts/libplacebo-config
-scripts/libplacebo-build "$@"
-scripts/libass-config
-scripts/libass-build "$@"
-scripts/ffmpeg-config
-scripts/ffmpeg-build "$@"
-scripts/mpv-config
-scripts/mpv-build "$@"
+emconfigure scripts/fribidi-config
+emmake scripts/fribidi-build "$@"
+emconfigure scripts/harfbuzz-config
+emmake scripts/harfbuzz-build "$@"
+emconfigure scripts/libexpat-config
+emmake scripts/libexpat-build "$@"
+emconfigure scripts/fontconfig-config
+emmake scripts/fontconfig-build "$@"
+emconfigure scripts/libass-config
+emmake scripts/libass-build "$@"
+emconfigure scripts/libplacebo-config
+emmake scripts/libplacebo-build "$@"
+emconfigure scripts/libass-config
+emmake scripts/libass-build "$@"
+emconfigure scripts/ffmpeg-config
+emmake scripts/ffmpeg-build "$@"
+emcmake scripts/sdl-config
+emmake scripts/sdl-build "$@"
+cp openal.pc build_libs/lib/pkgconfig
+PKG_CONFIG=/usr/bin/pkg-config emconfigure scripts/mpv-config
+emmake scripts/mpv-build "$@"

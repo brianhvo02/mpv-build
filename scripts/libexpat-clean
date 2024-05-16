@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -f libexpat/expat/Makefile ];then
+    make -C libexpat/expat distclean
+fi

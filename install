@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-scripts/mpv-install
+emmake scripts/mpv-install

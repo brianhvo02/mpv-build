@@ -3,6 +3,11 @@
 /libass
 /libplacebo
 /mpv
+/fontconfig
+/harfbuzz
+/libexpat
+/openal
+/sdl
 /build_libs
 /ffmpeg_build
 *.deb

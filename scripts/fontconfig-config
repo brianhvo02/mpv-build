@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+BUILD="$(pwd)"
+newline="
+"
+
+if test -f "$BUILD"/fontconfig_options ; then
+    IFS=$newline
+    set -- $(cat "$BUILD"/fontconfig_options) "$@"
+    unset -v IFS
+fi
+
+export CFLAGS="-sUSE_PTHREADS"
+OPTIONS="--enable-static --disable-shared --disable-cache-build"
+
+case "$PKG_CONFIG_PATH" in
+  '')
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig"
+    ;;
+  *)
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig:$PKG_CONFIG_PATH"
+    ;;
+esac
+
+cd "$BUILD"/fontconfig
+
+./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"

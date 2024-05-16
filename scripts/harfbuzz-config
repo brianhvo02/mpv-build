@@ -5,13 +5,15 @@ BUILD="$(pwd)"
 newline="
 "
 
-if test -f "$BUILD"/libplacebo_options ; then
+if test -f "$BUILD"/harfbuzz_options ; then
     IFS=$newline
-    set -- $(cat "$BUILD"/libplacebo_options) "$@"
+    set -- $(cat "$BUILD"/harfbuzz_options) "$@"
     unset -v IFS
 fi
 
-OPTIONS="-Ddefault_library=static -Dtests=false -Ddemos=false"
+export CFLAGS="-sUSE_PTHREADS"
+export CPPFLAGS=$CFLAGS
+OPTIONS="-Ddefault_library=static -Dtests=disabled --wrap-mode=default -Dc_args=$CFLAGS -Dcpp_args=$CPPFLAGS"
 
 case "$PKG_CONFIG_PATH" in
   '')
@@ -22,9 +24,9 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
-cd "$BUILD"/libplacebo
+cd "$BUILD"/harfbuzz
 
 test -d build && OPTIONS="$OPTIONS --wipe"
-echo Using libplacebo options: $OPTIONS "$@"
+echo Using harfbuzz options: $OPTIONS "$@"
 
 meson setup build --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --cross-file "$BUILD/emscripten.ini" $OPTIONS "$@"

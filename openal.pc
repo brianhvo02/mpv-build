@@ -1,0 +1,12 @@
+prefix=/emsdk/upstream/emscripten/cache/sysroot
+exec_prefix=${prefix}
+libdir=${prefix}/lib/wasm32-emscripten
+includedir=/src/mpv-build/openal/include
+
+Name: OpenAL
+Description: OpenAL is a cross-platform 3D audio API
+Requires: 
+Version: 1.23.1
+Libs: -L${libdir} -lal 
+Libs.private: -pthread
+Cflags: -I${includedir} -I${includedir}/AL -DAL_LIBTYPE_STATIC

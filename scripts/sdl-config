@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+BUILD="$(pwd)"
+newline="
+"
+
+if test -f "$BUILD"/sdl_options ; then
+    IFS=$newline
+    set -- $(cat "$BUILD"/sdl_options) "$@"
+    unset -v IFS
+fi
+
+OPTIONS="-DSDL_PTHREADS=ON -DSDL_OFFSCREEN=ON"
+
+case "$PKG_CONFIG_PATH" in
+  '')
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig"
+    ;;
+  *)
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig:$PKG_CONFIG_PATH"
+    ;;
+esac
+
+cd "$BUILD"/sdl
+cmake -B build -S . -DCMAKE_INSTALL_PREFIX="$BUILD/build_libs" -DCMAKE_INSTALL_LIBDIR="$BUILD/build_libs/lib" $OPTIONS "$@"
+

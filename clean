@@ -2,8 +2,12 @@
 export LC_ALL=C
 
 scripts/ffmpeg-clean
+scripts/fontconfig-clean
 scripts/fribidi-clean
+scripts/harfbuzz-clean
 scripts/libass-clean
+scripts/libexpat-clean
 scripts/libplacebo-clean
+scripts/sdl-clean
 scripts/mpv-clean
 rm -rf build_libs

@@ -18,10 +18,15 @@ do_clone()
 do_clone_all()
 {
     do_clone "ffmpeg"     "https://github.com/FFmpeg/FFmpeg.git"
-    #do_clone "fribidi"    "http://anongit.freedesktop.org/git/fribidi/fribidi.git"
+    do_clone "fontconfig"    "https://gitlab.freedesktop.org/fontconfig/fontconfig.git"
+    do_clone "fribidi"    "https://github.com/fribidi/fribidi.git"
+    do_clone "harfbuzz"    "https://github.com/harfbuzz/harfbuzz.git"
     do_clone "libass"     "https://github.com/libass/libass.git"
+    do_clone "libexpat"    "https://github.com/libexpat/libexpat.git"
     do_clone "libplacebo" "https://github.com/haasn/libplacebo.git"
     do_clone "mpv"        "https://github.com/mpv-player/mpv.git"
+    do_clone "openal"    "https://github.com/kcat/openal-soft.git"
+    do_clone "sdl"    "https://github.com/libsdl-org/SDL.git"
 }
 
 do_gitmaster()
@@ -86,21 +91,30 @@ checkout()
 
 # fallback targets: release/master/@foo if no config file
 checkout_ffmpeg=master
-#checkout_fribidi=release
+checkout_fontconfig=main
+checkout_fribidi=master
+checkout_harfbuzz=master
 checkout_libass=master
+checkout_libexpat=master
 checkout_libplacebo=master
 checkout_mpv=master
-
+checkout_openal=master
+checkout_sdl=main
 
 checkout_all()
 {
     set -ex
     do_clone_all
     checkout ffmpeg $checkout_ffmpeg
-    #$checkout fribidi $checkout_fribidi
+    checkout fontconfig $checkout_fontconfig
+    checkout fribidi $checkout_fribidi
+    checkout harfbuzz $checkout_harfbuzz
     checkout libass $checkout_libass
+    checkout libexpat $checkout_libexpat
     checkout libplacebo $checkout_libplacebo
     checkout mpv $checkout_mpv
+    checkout openal $checkout_openal
+    checkout sdl $checkout_sdl
 }
 
 do_update_debian_versions()
@@ -119,12 +133,19 @@ shift
 
 # allow checkout master/release without checking the config files
 case "$1" in
+    --main)
+        checkout_fontconfig="main -"
+        checkout_sdl="main -"
+        ;;
     --master)
         checkout_ffmpeg="master -"
-        #checkout_fribidi="master -"
+        checkout_fribidi="master -"
+        checkout_harfbuzz="master -"
         checkout_libass="master -"
+        checkout_libexpat="master -"
         checkout_libplacebo="master -"
         checkout_mpv="master -"
+        checkout_openal="master -"
         ;;
     --release)
         checkout_ffmpeg="release -"
