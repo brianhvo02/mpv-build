@@ -17,16 +17,21 @@ do_clone()
 
 do_clone_all()
 {
-    do_clone "ffmpeg"     "https://github.com/FFmpeg/FFmpeg.git"
-    do_clone "fontconfig"    "https://gitlab.freedesktop.org/fontconfig/fontconfig.git"
-    do_clone "fribidi"    "https://github.com/fribidi/fribidi.git"
-    do_clone "harfbuzz"    "https://github.com/harfbuzz/harfbuzz.git"
-    do_clone "libass"     "https://github.com/libass/libass.git"
-    do_clone "libexpat"    "https://github.com/libexpat/libexpat.git"
-    do_clone "libplacebo" "https://github.com/haasn/libplacebo.git"
-    do_clone "mpv"        "https://github.com/mpv-player/mpv.git"
-    do_clone "openal"    "https://github.com/kcat/openal-soft.git"
-    do_clone "sdl"    "https://github.com/libsdl-org/SDL.git"
+    do_clone "brotli"       "https://github.com/google/brotli.git"
+    do_clone "bzip2"        "https://sourceware.org/git/bzip2.git"
+    do_clone "ffmpeg"       "https://github.com/FFmpeg/FFmpeg.git"
+    do_clone "fontconfig"   "https://gitlab.freedesktop.org/fontconfig/fontconfig.git"
+    do_clone "freetype"     "https://gitlab.freedesktop.org/freetype/freetype.git"
+    do_clone "fribidi"      "https://github.com/fribidi/fribidi.git"
+    do_clone "harfbuzz"     "https://github.com/harfbuzz/harfbuzz.git"
+    do_clone "libass"       "https://github.com/libass/libass.git"
+    do_clone "libexpat"     "https://github.com/libexpat/libexpat.git"
+    do_clone "libplacebo"   "https://github.com/haasn/libplacebo.git"
+    do_clone "libpng"       "https://github.com/pnggroup/libpng.git"
+    do_clone "mpv"          "https://github.com/mpv-player/mpv.git"
+    do_clone "openal"       "https://github.com/kcat/openal-soft.git"
+    do_clone "sdl"          "https://github.com/libsdl-org/SDL.git"
+    do_clone "zlib"         "https://github.com/madler/zlib.git"
 }
 
 do_gitmaster()
@@ -101,31 +106,41 @@ checkout()
 }
 
 # fallback targets: release/master/@foo if no config file
+checkout_brotli=master
+checkout_bzip2=master
 checkout_ffmpeg=master
 checkout_fontconfig=main
+checkout_freetype=master
 checkout_fribidi=master
 checkout_harfbuzz=main
 checkout_libass=master
 checkout_libexpat=master
 checkout_libplacebo=master
+checkout_libpng=master
 checkout_mpv=master
 checkout_openal=master
 checkout_sdl=main
+checkout_zlib=master
 
 checkout_all()
 {
     set -ex
     do_clone_all
+    checkout brotli $checkout_brotli
+    checkout bzip2 $checkout_bzip2
     checkout ffmpeg $checkout_ffmpeg
     checkout fontconfig $checkout_fontconfig
+    checkout freetype $checkout_freetype
     checkout fribidi $checkout_fribidi
     checkout harfbuzz $checkout_harfbuzz
     checkout libass $checkout_libass
     checkout libexpat $checkout_libexpat
     checkout libplacebo $checkout_libplacebo
+    checkout libpng $checkout_libpng
     checkout mpv $checkout_mpv
     checkout openal $checkout_openal
     checkout sdl $checkout_sdl
+    checkout zlib $checkout_zlib
 }
 
 do_update_debian_versions()
@@ -150,13 +165,18 @@ case "$1" in
         checkout_sdl="main -"
         ;;
     --master)
+        checkout_brotli="master -"
+        checkout_bzip2="master -"
         checkout_ffmpeg="master -"
+        checkout_freetype="master -"
         checkout_fribidi="master -"
         checkout_libass="master -"
         checkout_libexpat="master -"
         checkout_libplacebo="master -"
+        checkout_libpng="master -"
         checkout_mpv="master -"
         checkout_openal="master -"
+        checkout_zlib="master -"
         ;;
     --release)
         checkout_ffmpeg="release -"

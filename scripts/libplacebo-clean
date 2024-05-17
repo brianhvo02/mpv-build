@@ -2,5 +2,7 @@
 set -e
 
 if [ -d "libplacebo/build" ]; then
+    ninja uninstall -C "libplacebo/build"
+    ninja clean -C "libplacebo/build"
     rm -r libplacebo/build
 fi

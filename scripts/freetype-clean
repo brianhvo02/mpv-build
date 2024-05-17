@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -d freetype/build ];then
+    rm -r freetype/build
+fi

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ -d brotli/build ];then
+    make -C brotli/build clean
+    rm -r brotli/build
+fi

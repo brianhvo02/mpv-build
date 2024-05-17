@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+BUILD="$(pwd)"
+newline="
+"
+
+if test -f "$BUILD"/brotli_options ; then
+    IFS=$newline
+    set -- $(cat "$BUILD"/brotli_options) "$@"
+    unset -v IFS
+fi
+
+export CFLAGS="-sMEMORY64"
+OPTIONS=""
+
+# case "$PKG_CONFIG_PATH" in
+#   '')
+#     export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig"
+#     ;;
+#   *)
+#     export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig:$PKG_CONFIG_PATH"
+#     ;;
+# esac
+
+cd "$BUILD"/brotli
+cmake -B build -S . -DCMAKE_INSTALL_PREFIX="$BUILD/build_libs" -DCMAKE_INSTALL_LIBDIR="$BUILD/build_libs/lib" $OPTIONS "$@"

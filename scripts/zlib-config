@@ -4,14 +4,14 @@ BUILD="$(pwd)"
 newline="
 "
 
-if test -f "$BUILD"/fontconfig_options ; then
+if test -f "$BUILD"/zlib_options ; then
     IFS=$newline
-    set -- $(cat "$BUILD"/fontconfig_options) "$@"
+    set -- $(cat "$BUILD"/zlib_options) "$@"
     unset -v IFS
 fi
 
 export CFLAGS="-sMEMORY64"
-OPTIONS="--enable-static --disable-shared --disable-cache-build"
+OPTIONS="--static"
 
 case "$PKG_CONFIG_PATH" in
   '')
@@ -22,6 +22,6 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
-cd "$BUILD"/fontconfig
+cd "$BUILD"/zlib
 
-./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
+./configure --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"

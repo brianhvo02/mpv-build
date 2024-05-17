@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -f bzip2/Makefile ];then
+    make -C bzip2 distclean
+fi

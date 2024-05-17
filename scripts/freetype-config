@@ -4,14 +4,14 @@ BUILD="$(pwd)"
 newline="
 "
 
-if test -f "$BUILD"/fontconfig_options ; then
+if test -f "$BUILD"/freetype_options ; then
     IFS=$newline
-    set -- $(cat "$BUILD"/fontconfig_options) "$@"
+    set -- $(cat "$BUILD"/freetype_options) "$@"
     unset -v IFS
 fi
 
 export CFLAGS="-sMEMORY64"
-OPTIONS="--enable-static --disable-shared --disable-cache-build"
+OPTIONS=""
 
 case "$PKG_CONFIG_PATH" in
   '')
@@ -22,6 +22,6 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
-cd "$BUILD"/fontconfig
+cd "$BUILD"/freetype
+cmake -B build -S . -DCMAKE_INSTALL_PREFIX="$BUILD/build_libs" -DCMAKE_INSTALL_LIBDIR="$BUILD/build_libs/lib" $OPTIONS "$@"
 
-./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"

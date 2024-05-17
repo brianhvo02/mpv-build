@@ -11,9 +11,10 @@ if test -f "$BUILD"/harfbuzz_options ; then
     unset -v IFS
 fi
 
-export CFLAGS="-sUSE_PTHREADS"
+export PKG_CONFIG=/usr/bin/pkg-config
+export CFLAGS="-sUSE_PTHREADS -sMEMORY64"
 export CPPFLAGS=$CFLAGS
-OPTIONS="-Ddefault_library=static -Dtests=disabled --wrap-mode=default -Dc_args=$CFLAGS -Dcpp_args=$CPPFLAGS"
+OPTIONS="-Ddefault_library=static -Dtests=disabled -Dc_args=['-sUSE_PTHREADS','-sMEMORY64'] -Dc_args=['-sUSE_PTHREADS','-sMEMORY64']"
 
 case "$PKG_CONFIG_PATH" in
   '')

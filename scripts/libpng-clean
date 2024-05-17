@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ -d libpng/build ];then
+    make -C libpng/build clean
+    rm -r libpng/build
+fi

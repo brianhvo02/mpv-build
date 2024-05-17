@@ -2,5 +2,7 @@
 set -e
 
 if [ -d "harfbuzz/build" ]; then
+    ninja uninstall -C harfbuzz/build
+    ninja clean -C harfbuzz/build
     rm -r harfbuzz/build
 fi
