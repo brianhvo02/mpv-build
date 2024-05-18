@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+apt update
+apt install -y git cmake build-essential python3 python3-pip python3-setuptools python3-wheel pipx ninja-build automake libtool gperf gettext autopoint llvm pkg-config
+mkdir src
+cd src
+
+pipx install meson
+pipx ensurepath
+source "$HOME/.profile"
+
+git clone https://github.com/emscripten-core/emsdk.git
+./emsdk/emsdk install tot
+./emsdk/emsdk activate tot
+source ./emsdk/emsdk_env.sh
+echo "source ./emsdk/emsdk_env.sh" >> "$HOME/.profile"
+npm --prefix "$EMSDK/upstream/emscripten" install
+
+git clone -b emscripten https://github.com/brianhvo02/mpv-build.git
+cd mpv-build
+./rebuild
+./install
