@@ -1,6 +1,6 @@
 prefix=/emsdk/upstream/emscripten/cache/sysroot
 exec_prefix=${prefix}
-libdir=${prefix}/lib/wasm32-emscripten
+libdir=${prefix}/lib/wasm64-emscripten
 includedir=/src/mpv-build/openal/include
 
 Name: OpenAL

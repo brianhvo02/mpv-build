@@ -1,0 +1,12 @@
+set -e
+BUILD="$(pwd)"
+newline="
+"
+
+mkdir -p "$BUILD/libal"
+cd "$BUILD/libal"
+emcc -c -O2 -Wall -fno-unroll-loops -Os -fno-inline-functions -g -sSTRICT -Werror -Wno-experimental \
+    -sMEMORY64=2 -ffile-prefix-map="$EMSDK/.."= -ffile-prefix-map="$EMSDK/upstream/emscripten"="$EMSDK/emscripten" \
+    -fdebug-compilation-dir="$EMSDK/emscripten" "$EMSDK/upstream/emscripten/system/lib/al.c"
+emar rc libal.a al.o
+cp libal.a "$BUILD/build_libs/lib"

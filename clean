@@ -1,13 +1,18 @@
 #!/bin/sh
 export LC_ALL=C
 
-scripts/ffmpeg-clean
-scripts/fontconfig-clean
 scripts/fribidi-clean
+scripts/brotli-clean
+scripts/bzip2-clean
+scripts/zlib-clean
+scripts/libpng-clean
+scripts/freetype-clean
 scripts/harfbuzz-clean
-scripts/libass-clean
 scripts/libexpat-clean
+scripts/fontconfig-clean
+scripts/libass-clean
 scripts/libplacebo-clean
+scripts/ffmpeg-clean
 scripts/sdl-clean
 scripts/mpv-clean
 rm -rf build_libs

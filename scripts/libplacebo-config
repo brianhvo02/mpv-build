@@ -12,7 +12,7 @@ if test -f "$BUILD"/libplacebo_options ; then
 fi
 
 export CFLAGS="-sMEMORY64"
-OPTIONS="-Ddefault_library=static -Dtests=false -Ddemos=false -Dc_args=-sMEMORY64"
+OPTIONS="-Ddefault_library=static -Dtests=false -Ddemos=false -Dc_args=$CFLAGS -Dc_link_args=$CFLAGS -Dcpp_args=$CFLAGS -Dcpp_link_args=$CFLAGS"
 
 case "$PKG_CONFIG_PATH" in
   '')

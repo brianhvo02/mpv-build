@@ -10,7 +10,7 @@ if test -f "$BUILD"/brotli_options ; then
     unset -v IFS
 fi
 
-export CFLAGS="-sMEMORY64"
+export CFLAGS="-sMEMORY64 -sUSE_PTHREADS"
 OPTIONS=""
 
 # case "$PKG_CONFIG_PATH" in

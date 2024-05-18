@@ -4,7 +4,7 @@ BUILD="$(pwd)"
 newline="
 "
 
-export CFLAGS="$CFLAGS -sMEMORY64"
+export CFLAGS="$CFLAGS -sMEMORY64 -sUSE_PTHREADS"
 export PREFIX="$BUILD/build_libs"
 
 make -C bzip2 -e install "$@"

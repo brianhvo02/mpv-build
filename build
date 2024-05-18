@@ -4,17 +4,20 @@ export LC_ALL=C
 
 emconfigure scripts/fribidi-config
 emmake scripts/fribidi-build "$@"
-emcmake scripts/brotli-config
-emmake scripts/brotli-build "$@"
+# emcmake scripts/brotli-config
+# emmake scripts/brotli-build "$@"
 emmake scripts/bzip2-build "$@"
 emconfigure scripts/zlib-config
 emmake scripts/zlib-build "$@"
 emcmake scripts/libpng-config
 emmake scripts/libpng-build "$@"
-emcmake scripts/freetype-config
+emconfigure scripts/freetype-config
 emmake scripts/freetype-build "$@"
 emconfigure scripts/harfbuzz-config
 emmake scripts/harfbuzz-build "$@"
+scripts/freetype-clean
+emconfigure scripts/freetype-config
+emmake scripts/freetype-build "$@"
 emconfigure scripts/libexpat-config
 emmake scripts/libexpat-build "$@"
 emconfigure scripts/fontconfig-config
