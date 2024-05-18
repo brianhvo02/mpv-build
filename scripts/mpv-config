@@ -20,7 +20,7 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
-export PKG_CONFIG=/usr/bin/pkg-config
+export PKG_CONFIG="/usr/bin/pkg-config"
 OPTIONS="-Ddefault_library=static -Dlibmpv=true -Dc_args=['-sUSE_PTHREADS','-sMEMORY64'] -Dopenal=enabled"
 
 echo Using mpv options: $OPTIONS "$@"

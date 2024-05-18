@@ -1,4 +1,3 @@
-prefix=${EMSDK}/upstream/emscripten/cache/sysroot
 exec_prefix=${prefix}
 libdir=${prefix}/lib/wasm64-emscripten
 

@@ -30,6 +30,7 @@ emconfigure scripts/ffmpeg-config
 emmake scripts/ffmpeg-build "$@"
 emcmake scripts/sdl-config
 emmake scripts/sdl-build "$@"
-echo "includedir=$(realpath openal/include)" | cat - openal.pc > build_libs/lib/pkgconfig/openal.pc
+echo "includedir=$(realpath openal/include)
+prefix=$EMSDK/upstream/emscripten/cache/sysroot" | cat - openal.pc > build_libs/lib/pkgconfig/openal.pc
 emconfigure scripts/mpv-config
 emmake scripts/mpv-build "$@"

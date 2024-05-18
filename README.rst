@@ -8,6 +8,13 @@ essential, and distribution packages are often too old or too broken.
 Generic Instructions
 ====================
 
+You can build a Docker image to compile libmpv-wasm or other code.
+NOTE: This build is -sMEMORY64 and -pthreads enabled so compile your code with those flags as well.
+
+To build the image::
+
+    docker build -t mpv-build --build-arg BUILD_FLAGS=-j4 .
+
 Make sure git is installed. Also check that the dependencies listed in
 the next section are installed.
 
