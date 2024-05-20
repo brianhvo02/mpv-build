@@ -36,5 +36,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            brianhvo02/em_mpv:memory64-1.0.0
-            ghcr.io/brianhvo02/em_mpv:memory64-1.0.0
+            brianhvo02/em_mpv:latest
+            brianhvo02/em_mpv:1.0.0
+            ghcr.io/brianhvo02/em_mpv:latest
+            ghcr.io/brianhvo02/em_mpv:1.0.0  

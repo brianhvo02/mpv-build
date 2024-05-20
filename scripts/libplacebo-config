@@ -11,7 +11,7 @@ if test -f "$BUILD"/libplacebo_options ; then
     unset -v IFS
 fi
 
-export CFLAGS="-sMEMORY64"
+# export CFLAGS=""
 OPTIONS="-Ddefault_library=static -Dtests=false -Ddemos=false -Dc_args=$CFLAGS -Dc_link_args=$CFLAGS -Dcpp_args=$CFLAGS -Dcpp_link_args=$CFLAGS"
 
 case "$PKG_CONFIG_PATH" in

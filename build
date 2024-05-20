@@ -4,8 +4,8 @@ export LC_ALL=C
 
 emconfigure scripts/fribidi-config
 emmake scripts/fribidi-build "$@"
-# emcmake scripts/brotli-config
-# emmake scripts/brotli-build "$@"
+emcmake scripts/brotli-config
+emmake scripts/brotli-build "$@"
 emmake scripts/bzip2-build "$@"
 emconfigure scripts/zlib-config
 emmake scripts/zlib-build "$@"

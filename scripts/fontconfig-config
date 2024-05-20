@@ -10,7 +10,7 @@ if test -f "$BUILD"/fontconfig_options ; then
     unset -v IFS
 fi
 
-export CFLAGS="-sMEMORY64"
+# export CFLAGS=""
 OPTIONS="--enable-static --disable-shared --disable-cache-build"
 
 case "$PKG_CONFIG_PATH" in

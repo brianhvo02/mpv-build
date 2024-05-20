@@ -10,7 +10,7 @@ if test -f "$BUILD"/sdl_options ; then
     unset -v IFS
 fi
 
-export CFLAGS="-sMEMORY64"
+# export CFLAGS=""
 OPTIONS="-DSDL_PTHREADS=ON -DSDL_OFFSCREEN=ON"
 
 case "$PKG_CONFIG_PATH" in

@@ -10,7 +10,7 @@ if test -f "$BUILD"/freetype_options ; then
     unset -v IFS
 fi
 
-export CFLAGS="-sUSE_PTHREADS -sMEMORY64"
+export CFLAGS="-sUSE_PTHREADS"
 OPTIONS="-DCMAKE_PREFIX_PATH=$BUILD/build_libs"
 
 case "$PKG_CONFIG_PATH" in

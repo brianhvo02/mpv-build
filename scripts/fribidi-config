@@ -10,7 +10,7 @@ if test -f "$BUILD"/fribidi_options ; then
     unset -v IFS
 fi
 
-export CFLAGS="-sMEMORY64"
+# export CFLAGS=""
 OPTIONS="--enable-static --disable-shared"
 if "$BUILD"/scripts/test-libmpv ; then
     OPTIONS="$OPTIONS --with-pic"

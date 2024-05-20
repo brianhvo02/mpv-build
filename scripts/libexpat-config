@@ -10,7 +10,7 @@ if test -f "$BUILD/libexpat_options" ; then
     unset -v IFS
 fi
 
-export CFLAGS="-sMEMORY64"
+# export CFLAGS=""
 OPTIONS="--enable-static --disable-shared"
 
 cd "$BUILD/libexpat/expat"

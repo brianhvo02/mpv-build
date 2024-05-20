@@ -13,8 +13,8 @@ if test -f "$BUILD"/ffmpeg_options ; then
     unset -v IFS
 fi
 
-export CFLAGS="-sUSE_PTHREADS -sMEMORY64"
-LDFLAGS="$CFLAGS -sINITIAL_MEMORY=33554432" # 33554432 bytes = 32 MB
+export CFLAGS="-sUSE_PTHREADS"
+LDFLAGS="$CFLAGS -sINITIAL_MEMORY=32MB" # 33554432 bytes = 32 MB
 # need to link against stdc++ in case libplacebo was built with glslang,
 # which requires that
 export LDFLAGS="$LDFLAGS -lstdc++"

@@ -9,7 +9,7 @@ Generic Instructions
 ====================
 
 You can build a Docker image to compile libmpv-wasm or other code.
-NOTE: This build is -sMEMORY64 and -pthreads enabled so compile your code with those flags as well.
+NOTE: This build is -pthreads enabled so compile your code with those flags as well.
 
 To build the image::
 
