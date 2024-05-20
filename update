@@ -17,7 +17,6 @@ do_clone()
 
 do_clone_all()
 {
-    do_clone "brotli"       "https://github.com/google/brotli.git"
     do_clone "bzip2"        "https://sourceware.org/git/bzip2.git"
     do_clone "ffmpeg"       "https://github.com/FFmpeg/FFmpeg.git"
     do_clone "fontconfig"   "https://gitlab.freedesktop.org/fontconfig/fontconfig.git"
@@ -106,7 +105,6 @@ checkout()
 }
 
 # fallback targets: release/master/@foo if no config file
-checkout_brotli=master
 checkout_bzip2=master
 checkout_ffmpeg=master
 checkout_fontconfig=main
@@ -126,7 +124,6 @@ checkout_all()
 {
     set -ex
     do_clone_all
-    checkout brotli $checkout_brotli
     checkout bzip2 $checkout_bzip2
     checkout ffmpeg $checkout_ffmpeg
     checkout fontconfig $checkout_fontconfig
@@ -165,7 +162,6 @@ case "$1" in
         checkout_sdl="main -"
         ;;
     --master)
-        checkout_brotli="master -"
         checkout_bzip2="master -"
         checkout_ffmpeg="master -"
         checkout_freetype="master -"

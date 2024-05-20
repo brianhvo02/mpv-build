@@ -2,7 +2,6 @@
 export LC_ALL=C
 
 scripts/fribidi-clean
-scripts/brotli-clean
 scripts/bzip2-clean
 scripts/zlib-clean
 scripts/libpng-clean
