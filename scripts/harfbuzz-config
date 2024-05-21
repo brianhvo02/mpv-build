@@ -12,7 +12,7 @@ if test -f "$BUILD"/harfbuzz_options ; then
 fi
 
 export PKG_CONFIG=/usr/bin/pkg-config
-# export CFLAGS="-sUSE_PTHREADS"
+export CFLAGS="-sUSE_PTHREADS"
 export CPPFLAGS=$CFLAGS
 OPTIONS="-Ddefault_library=static -Dtests=disabled -Dc_args=-sUSE_PTHREADS -Dc_args=-sUSE_PTHREADS"
 

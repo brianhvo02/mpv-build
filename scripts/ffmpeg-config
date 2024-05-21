@@ -30,6 +30,7 @@ OPTIONS=(
     --disable-doc           # disable doc
     --disable-sdl2
     --enable-gpl
+    --enable-libdav1d
     --disable-debug 
     --enable-static
     --disable-shared

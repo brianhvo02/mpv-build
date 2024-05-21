@@ -10,8 +10,8 @@ if test -f "$BUILD"/libass_options ; then
     unset -v IFS
 fi
 
-# export CFLAGS=""
-OPTIONS="--enable-static --disable-shared"
+export CFLAGS="-sUSE_PTHREADS"
+OPTIONS="--enable-static --disable-shared --disable-asm"
 if "$BUILD"/scripts/test-libmpv ; then
     OPTIONS="$OPTIONS --with-pic"
 fi

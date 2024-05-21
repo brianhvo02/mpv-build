@@ -18,6 +18,7 @@ do_clone()
 do_clone_all()
 {
     do_clone "bzip2"        "https://sourceware.org/git/bzip2.git"
+    do_clone "dav1d"        "https://code.videolan.org/videolan/dav1d.git"
     do_clone "ffmpeg"       "https://github.com/FFmpeg/FFmpeg.git"
     do_clone "fontconfig"   "https://gitlab.freedesktop.org/fontconfig/fontconfig.git"
     do_clone "freetype"     "https://gitlab.freedesktop.org/freetype/freetype.git"
@@ -106,6 +107,7 @@ checkout()
 
 # fallback targets: release/master/@foo if no config file
 checkout_bzip2=master
+checkout_dav1d=master
 checkout_ffmpeg=master
 checkout_fontconfig=main
 checkout_freetype=master
@@ -125,6 +127,7 @@ checkout_all()
     set -ex
     do_clone_all
     checkout bzip2 $checkout_bzip2
+    checkout dav1d $checkout_dav1d
     checkout ffmpeg $checkout_ffmpeg
     checkout fontconfig $checkout_fontconfig
     checkout freetype $checkout_freetype
@@ -157,6 +160,7 @@ shift
 # allow checkout master/release without checking the config files
 case "$1" in
     --main)
+        checkout_dav1d="main -"
         checkout_fontconfig="main -"
         checkout_harfbuzz="main -"
         checkout_sdl="main -"
