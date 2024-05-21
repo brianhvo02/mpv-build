@@ -23,6 +23,8 @@ RUN ./install
 
 FROM emscripten/emsdk:latest
 RUN <<EOF
+    apt-get update
+    apt-get install -y pkg-config
     emsdk install tot
     emsdk activate tot
     npm --prefix "$EMSDK/upstream/emscripten" install
