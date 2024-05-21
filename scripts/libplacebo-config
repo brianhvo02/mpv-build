@@ -12,7 +12,9 @@ if test -f "$BUILD"/libplacebo_options ; then
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
-OPTIONS="-Ddefault_library=static -Dtests=false -Ddemos=false -Dc_args=$CFLAGS -Dc_link_args=$CFLAGS -Dcpp_args=$CFLAGS -Dcpp_link_args=$CFLAGS"
+export LDFLAGS="$CFLAGS -sWASM_BIGINT"
+FLAGS="['-sUSE_PTHREADS','-sWASM_BIGINT']"
+OPTIONS="-Ddefault_library=static -Dtests=false -Ddemos=false -Dc_args=$CFLAGS -Dc_link_args=$FLAGS -Dcpp_args=$CFLAGS -Dcpp_link_args=$FLAGS"
 
 case "$PKG_CONFIG_PATH" in
   '')

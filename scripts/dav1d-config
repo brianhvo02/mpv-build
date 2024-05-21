@@ -12,7 +12,8 @@ if test -f "$BUILD"/dav1d_options ; then
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
-OPTIONS="-Ddefault_library=static -Denable_asm=false -Denable_tools=false -Denable_tests=false -Dc_args=$CFLAGS -Dc_link_args=$CFLAGS -Dcpp_args=$CFLAGS -Dcpp_link_args=$CFLAGS"
+FLAGS="['-sUSE_PTHREADS','-sWASM_BIGINT']"
+OPTIONS="-Ddefault_library=static -Denable_asm=false -Denable_tools=false -Denable_tests=false -Dc_args=$CFLAGS -Dc_link_args=$FLAGS -Dcpp_args=$CFLAGS -Dcpp_link_args=$FLAGS"
 
 case "$PKG_CONFIG_PATH" in
   '')

@@ -11,6 +11,7 @@ if test -f "$BUILD"/sdl_options ; then
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
+export LDFLAGS="$CFLAGS -sWASM_BIGINT"
 OPTIONS="-DSDL_PTHREADS=ON -DSDL_OFFSCREEN=ON"
 
 case "$PKG_CONFIG_PATH" in

@@ -11,6 +11,7 @@ if test -f "$BUILD"/zlib_options ; then
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
+export LDFLAGS="$CFLAGS -sWASM_BIGINT"
 OPTIONS="--static"
 
 case "$PKG_CONFIG_PATH" in

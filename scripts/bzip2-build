@@ -4,7 +4,7 @@ BUILD="$(pwd)"
 newline="
 "
 
-export CFLAGS="$CFLAGS -sUSE_PTHREADS"
+export CFLAGS="$CFLAGS -sUSE_PTHREADS -sWASM_BIGINT"
 export PREFIX="$BUILD/build_libs"
 
 make -C bzip2 -e install "$@"

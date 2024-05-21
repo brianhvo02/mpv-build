@@ -11,6 +11,7 @@ if test -f "$BUILD"/libpng_options ; then
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
+export LDFLAGS="$CFLAGS -sWASM_BIGINT"
 OPTIONS="-DZLIB_LIBRARY=$BUILD/build_libs/libs/libz.a -DZLIB_INCLUDE_DIR=$BUILD/build_libs/include -DPNG_TESTS=OFF -DPNG_TOOLS=OFF"
 
 case "$PKG_CONFIG_PATH" in

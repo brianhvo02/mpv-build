@@ -21,7 +21,9 @@ case "$PKG_CONFIG_PATH" in
 esac
 
 export PKG_CONFIG="/usr/bin/pkg-config"
-OPTIONS="-Ddefault_library=static -Dlibmpv=true -Dc_args=-sUSE_PTHREADS -Dopenal=enabled -Dmanpage-build=disabled"
+export CFLAGS="-sUSE_PTHREADS"
+FLAGS="['-sUSE_PTHREADS','-sWASM_BIGINT','-sINITIAL_MEMORY=32MB']"
+OPTIONS="-Ddefault_library=static -Dlibmpv=true -Dopenal=enabled -Dmanpage-build=disabled -Dc_args=$CFLAGS -Dc_link_args=$FLAGS -Dcpp_args=$CFLAGS -Dcpp_link_args=$FLAGS"
 
 echo Using mpv options: $OPTIONS "$@"
 
@@ -31,5 +33,5 @@ cd "$BUILD"/mpv
 # this is necessary due to the hybrid static / dynamic nature of the build
 # need to link against stdc++ in case libplacebo was built with glslang,
 # which requires that
-export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi) -sUSE_PTHREADS -sINITIAL_MEMORY=32MB -lstdc++"
+export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi) $CFLAGS -sINITIAL_MEMORY=32MB -lstdc++"
 meson setup build --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --cross-file "$BUILD/emscripten.ini" $OPTIONS "$@"

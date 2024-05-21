@@ -11,6 +11,7 @@ if test -f "$BUILD"/freetype_options ; then
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
+export LDFLAGS="$CFLAGS -sWASM_BIGINT"
 OPTIONS="-DCMAKE_PREFIX_PATH=$BUILD/build_libs"
 
 case "$PKG_CONFIG_PATH" in

@@ -11,6 +11,7 @@ if test -f "$BUILD"/fontconfig_options ; then
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
+export LDFLAGS="$CFLAGS -sWASM_BIGINT"
 OPTIONS="--enable-static --disable-shared --disable-cache-build"
 
 case "$PKG_CONFIG_PATH" in
