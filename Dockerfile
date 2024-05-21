@@ -17,8 +17,8 @@ EOF
 
 COPY . .
 
-# RUN ./update
-# RUN ./build $BUILD_FLAGS
-# RUN ./install
+RUN ./update
+RUN ./build $BUILD_FLAGS
+RUN ./install
 
 ENTRYPOINT ["bash"]
