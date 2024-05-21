@@ -14,7 +14,7 @@ if test -f "$BUILD"/ffmpeg_options ; then
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
-LDFLAGS="$CFLAGS -sWASM_BIGINT -sINITIAL_MEMORY=32MB" # 33554432 bytes = 32 MB
+LDFLAGS="$CFLAGS -sWASM_BIGINT -sINITIAL_MEMORY=32MB -L$BUILD/build_libs/lib" # 33554432 bytes = 32 MB
 # need to link against stdc++ in case libplacebo was built with glslang,
 # which requires that
 export LDFLAGS="$LDFLAGS -lstdc++"
@@ -29,8 +29,9 @@ OPTIONS=(
     --disable-programs      # disable programs build (incl. ffplay, ffprobe & ffmpeg)
     --disable-doc           # disable doc
     --disable-sdl2
-    --enable-gpl
+    --enable-version3
     --enable-libdav1d
+    --enable-openssl
     --disable-debug 
     --enable-static
     --disable-shared
@@ -48,22 +49,6 @@ OPTIONS=(
 
 if "$BUILD"/scripts/test-libmpv ; then
     OPTIONS+=("--enable-pic")
-fi
-
-# Do FFmpeg's job.
-if ( echo "${OPTIONS[*]}" "$@" | \
-    grep -q -E -e "-openssl|-gnutls|-mbedtls|-libtls|-schannel|-securetransport" )
-then
-    echo TLS/SSL user option specified, skipping autodetection
-else
-    if pkg-config gnutls ; then
-        OPTIONS+=("--enable-gnutls")
-        echo "Auto-enabling GnuTLS."
-    elif pkg-config openssl ; then
-        OPTIONS+=("--enable-nonfree")
-        OPTIONS+=("--enable-openssl")
-        echo "Auto-enabling OpenSSL (creates a non-redistributable binary)."
-    fi
 fi
 
 case "$PKG_CONFIG_PATH" in

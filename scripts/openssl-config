@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+BUILD="$(pwd)"
+newline="
+"
+
+if test -f "$BUILD"/openssl_options ; then
+    IFS=$newline
+    set -- $(cat "$BUILD"/openssl_options) "$@"
+    unset -v IFS
+fi
+
+export CFLAGS="-sUSE_PTHREADS -I$BUILD/build_libs/include"
+export LDFLAGS="$CFLAGS -sWASM_BIGINT -L$BUILD/build_libs/lib"
+OPTIONS="no-shared no-asm no-apps no-docs no-afalgeng"
+
+cd "$BUILD/openssl"
+emconfigure ./Configure --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --openssldir="$BUILD/build_libs/etc/ssl" $OPTIONS "$@" linux-generic64
+sed -i 's|^CROSS_COMPILE.*$|CROSS_COMPILE=|g' Makefile
