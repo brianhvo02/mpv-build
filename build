@@ -26,8 +26,8 @@ emconfigure scripts/dav1d-config
 emmake scripts/dav1d-build "$@"
 emconfigure scripts/libplacebo-config
 emmake scripts/libplacebo-build "$@"
-# emconfigure scripts/openssl-config
-# emmake scripts/openssl-build "$@"
+emconfigure scripts/openssl-config
+emmake scripts/openssl-build "$@"
 emconfigure scripts/ffmpeg-config
 emmake scripts/ffmpeg-build "$@"
 emcmake scripts/sdl-config

@@ -30,7 +30,7 @@ do_clone_all()
     do_clone "libpng"       "https://github.com/pnggroup/libpng.git"
     do_clone "mpv"          "https://github.com/mpv-player/mpv.git"
     do_clone "openal"       "https://github.com/kcat/openal-soft.git"
-    # do_clone "openssl"       "https://github.com/openssl/openssl.git"
+    do_clone "openssl"       "https://github.com/openssl/openssl.git"
     do_clone "sdl"          "https://github.com/libsdl-org/SDL.git"
     do_clone "zlib"         "https://github.com/madler/zlib.git"
 }
@@ -120,7 +120,7 @@ checkout_libplacebo=master
 checkout_libpng=master
 checkout_mpv=master
 checkout_openal=master
-# checkout_openssl=master
+checkout_openssl=master
 checkout_sdl=main
 checkout_zlib=master
 
@@ -141,7 +141,7 @@ checkout_all()
     checkout libpng $checkout_libpng
     checkout mpv $checkout_mpv
     checkout openal $checkout_openal
-    # checkout openssl $checkout_openssl
+    checkout openssl $checkout_openssl
     checkout sdl $checkout_sdl
     checkout zlib $checkout_zlib
 }
@@ -179,7 +179,7 @@ case "$1" in
         checkout_libpng="master -"
         checkout_mpv="master -"
         checkout_openal="master -"
-        # checkout_openssl="master -"
+        checkout_openssl="master -"
         checkout_zlib="master -"
         ;;
     --release)

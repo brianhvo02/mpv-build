@@ -12,7 +12,7 @@ scripts/fontconfig-clean
 scripts/libass-clean
 scripts/dav1d-clean
 scripts/libplacebo-clean
-# scripts/openssl-clean
+scripts/openssl-clean
 scripts/ffmpeg-clean
 scripts/sdl-clean
 scripts/mpv-clean
