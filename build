@@ -2,30 +2,30 @@
 set -e
 export LC_ALL=C
 
-# emconfigure scripts/fribidi-config
-# emmake scripts/fribidi-build "$@"
-# emmake scripts/bzip2-build "$@"
-# emconfigure scripts/zlib-config
-# emmake scripts/zlib-build "$@"
-# emcmake scripts/libpng-config
-# emmake scripts/libpng-build "$@"
-# emconfigure scripts/freetype-config
-# emmake scripts/freetype-build "$@"
-# emconfigure scripts/harfbuzz-config
-# emmake scripts/harfbuzz-build "$@"
-# emconfigure scripts/freetype-clean
-# emconfigure scripts/freetype-config
-# emmake scripts/freetype-build "$@"
-# emconfigure scripts/libexpat-config
-# emmake scripts/libexpat-build "$@"
-# emconfigure scripts/fontconfig-config
-# emmake scripts/fontconfig-build "$@"
-# emconfigure scripts/libass-config
-# emmake scripts/libass-build "$@"
-# emconfigure scripts/dav1d-config
-# emmake scripts/dav1d-build "$@"
-# emconfigure scripts/libplacebo-config
-# emmake scripts/libplacebo-build "$@"
+emconfigure scripts/fribidi-config
+emmake scripts/fribidi-build "$@"
+emmake scripts/bzip2-build "$@"
+emconfigure scripts/zlib-config
+emmake scripts/zlib-build "$@"
+emcmake scripts/libpng-config
+emmake scripts/libpng-build "$@"
+emconfigure scripts/freetype-config
+emmake scripts/freetype-build "$@"
+emconfigure scripts/harfbuzz-config
+emmake scripts/harfbuzz-build "$@"
+emconfigure scripts/freetype-clean
+emconfigure scripts/freetype-config
+emmake scripts/freetype-build "$@"
+emconfigure scripts/libexpat-config
+emmake scripts/libexpat-build "$@"
+emconfigure scripts/fontconfig-config
+emmake scripts/fontconfig-build "$@"
+emconfigure scripts/libass-config
+emmake scripts/libass-build "$@"
+emconfigure scripts/dav1d-config
+emmake scripts/dav1d-build "$@"
+emconfigure scripts/libplacebo-config
+emmake scripts/libplacebo-build "$@"
 emconfigure scripts/ffmpeg-config
 emmake scripts/ffmpeg-build "$@"
 emcmake scripts/sdl-config
