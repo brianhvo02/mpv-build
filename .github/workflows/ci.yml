@@ -1,5 +1,8 @@
 name: ci
 
+env:
+  BUILD_FLAGS: -j8
+
 on:
   push:
 
