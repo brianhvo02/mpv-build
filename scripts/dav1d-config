@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+
+BUILD="$(pwd)"
+newline="
+"
+
+if test -f "$BUILD"/dav1d_options ; then
+    IFS=$newline
+    set -- $(cat "$BUILD"/dav1d_options) "$@"
+    unset -v IFS
+fi
+
+export CFLAGS="-sUSE_PTHREADS"
+OPTIONS="-Ddefault_library=static -Denable_asm=false -Denable_tools=false -Denable_tests=false -Dc_args=$CFLAGS -Dc_link_args=$CFLAGS -Dcpp_args=$CFLAGS -Dcpp_link_args=$CFLAGS"
+
+case "$PKG_CONFIG_PATH" in
+  '')
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig"
+    ;;
+  *)
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig:$PKG_CONFIG_PATH"
+    ;;
+esac
+
+cd "$BUILD/dav1d"
+
+test -d build && OPTIONS="$OPTIONS --wipe"
+
+meson setup build --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --cross-file "$BUILD/emscripten.ini" $OPTIONS "$@"

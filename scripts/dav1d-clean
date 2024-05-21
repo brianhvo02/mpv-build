@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+if [ -d "dav1d/build" ]; then
+    ninja uninstall -C "dav1d/build"
+    ninja clean -C "dav1d/build"
+    rm -r dav1d/build
+fi

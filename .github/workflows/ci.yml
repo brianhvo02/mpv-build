@@ -1,7 +1,7 @@
 name: ci
 
 env:
-  BUILD_FLAGS: -j8
+  BUILD_FLAGS: -j4
 
 on:
   push:
