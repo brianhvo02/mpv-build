@@ -25,12 +25,15 @@ do_clone_all()
     do_clone "fribidi"      "https://github.com/fribidi/fribidi.git"
     do_clone "harfbuzz"     "https://github.com/harfbuzz/harfbuzz.git"
     do_clone "libass"       "https://github.com/libass/libass.git"
+    do_clone "libbluray"    "https://code.videolan.org/videolan/libbluray.git"
     do_clone "libexpat"     "https://github.com/libexpat/libexpat.git"
     do_clone "libplacebo"   "https://github.com/haasn/libplacebo.git"
     do_clone "libpng"       "https://github.com/pnggroup/libpng.git"
+    do_clone "libudfread"   "https://code.videolan.org/videolan/libudfread.git"
+    do_clone "libxml2"      "https://gitlab.gnome.org/GNOME/libxml2.git"
     do_clone "mpv"          "https://github.com/mpv-player/mpv.git"
     do_clone "openal"       "https://github.com/kcat/openal-soft.git"
-    do_clone "openssl"       "https://github.com/openssl/openssl.git"
+    # do_clone "openssl"       "https://github.com/openssl/openssl.git"
     do_clone "sdl"          "https://github.com/libsdl-org/SDL.git"
     do_clone "zlib"         "https://github.com/madler/zlib.git"
 }
@@ -115,12 +118,15 @@ checkout_freetype=master
 checkout_fribidi=master
 checkout_harfbuzz=main
 checkout_libass=master
+checkout_libbluray=master
 checkout_libexpat=master
 checkout_libplacebo=master
 checkout_libpng=master
+checkout_libudfread=master
+checkout_libxml2=master
 checkout_mpv=master
 checkout_openal=master
-checkout_openssl=master
+# checkout_openssl=master
 checkout_sdl=main
 checkout_zlib=master
 
@@ -136,12 +142,15 @@ checkout_all()
     checkout fribidi $checkout_fribidi
     checkout harfbuzz $checkout_harfbuzz
     checkout libass $checkout_libass
+    checkout libbluray $checkout_libbluray
     checkout libexpat $checkout_libexpat
     checkout libplacebo $checkout_libplacebo
     checkout libpng $checkout_libpng
+    checkout libudfread $checkout_libudfread
+    checkout libxml2 $checkout_libxml2
     checkout mpv $checkout_mpv
     checkout openal $checkout_openal
-    checkout openssl $checkout_openssl
+    # checkout openssl $checkout_openssl
     checkout sdl $checkout_sdl
     checkout zlib $checkout_zlib
 }
@@ -174,12 +183,15 @@ case "$1" in
         checkout_freetype="master -"
         checkout_fribidi="master -"
         checkout_libass="master -"
+        checkout_libbluray="master -"
         checkout_libexpat="master -"
         checkout_libplacebo="master -"
         checkout_libpng="master -"
+        checkout_libudfread="master -"
+        checkout_libxml2="master -"
         checkout_mpv="master -"
         checkout_openal="master -"
-        checkout_openssl="master -"
+        # checkout_openssl="master -"
         checkout_zlib="master -"
         ;;
     --release)

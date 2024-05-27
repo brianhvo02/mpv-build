@@ -1,5 +1,5 @@
 exec_prefix=${prefix}
-libdir=${prefix}/lib/wasm64-emscripten
+libdir=${prefix}/lib/wasm32-emscripten
 
 Name: OpenAL
 Description: OpenAL is a cross-platform 3D audio API

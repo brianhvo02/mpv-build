@@ -4,18 +4,15 @@ BUILD="$(pwd)"
 newline="
 "
 
-if test -f "$BUILD"/fribidi_options ; then
+if test -f "$BUILD"/libbluray_options ; then
     IFS=$newline
-    set -- $(cat "$BUILD"/fribidi_options) "$@"
+    set -- $(cat "$BUILD"/libbluray_options) "$@"
     unset -v IFS
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
 export LDFLAGS="$CFLAGS -sWASM_BIGINT"
-OPTIONS="--enable-static --disable-shared"
-if "$BUILD"/scripts/test-libmpv ; then
-    OPTIONS="$OPTIONS --with-pic"
-fi
+OPTIONS="--enable-static --disable-shared --disable-examples --disable-bdjava-jar --disable-bdjava-jar --disable-doxygen-doc"
 
 case "$PKG_CONFIG_PATH" in
   '')
@@ -26,6 +23,6 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
-cd "$BUILD"/fribidi
-./autogen.sh
+cd "$BUILD"/libbluray
+./bootstrap
 ./configure --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"

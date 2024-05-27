@@ -26,12 +26,18 @@ emconfigure scripts/dav1d-config
 emmake scripts/dav1d-build "$@"
 emconfigure scripts/libplacebo-config
 emmake scripts/libplacebo-build "$@"
-emconfigure scripts/openssl-config
-emmake scripts/openssl-build "$@"
+# emconfigure scripts/openssl-config
+# emmake scripts/openssl-build "$@"
 emconfigure scripts/ffmpeg-config
 emmake scripts/ffmpeg-build "$@"
 emcmake scripts/sdl-config
 emmake scripts/sdl-build "$@"
+emconfigure scripts/libxml2-config
+emmake scripts/libxml2-build
+emconfigure scripts/libudfread-config
+emmake scripts/libudfread-build
+emconfigure scripts/libbluray-config
+emmake scripts/libbluray-build
 echo "includedir=$(realpath openal/include)
 prefix=$EMSDK/upstream/emscripten/cache/sysroot" | cat - openal.pc > build_libs/lib/pkgconfig/openal.pc
 emconfigure scripts/mpv-config

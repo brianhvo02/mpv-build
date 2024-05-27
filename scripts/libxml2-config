@@ -4,18 +4,15 @@ BUILD="$(pwd)"
 newline="
 "
 
-if test -f "$BUILD"/fribidi_options ; then
+if test -f "$BUILD"/libxml2_options ; then
     IFS=$newline
-    set -- $(cat "$BUILD"/fribidi_options) "$@"
+    set -- $(cat "$BUILD"/libxml2_options) "$@"
     unset -v IFS
 fi
 
 export CFLAGS="-sUSE_PTHREADS"
 export LDFLAGS="$CFLAGS -sWASM_BIGINT"
-OPTIONS="--enable-static --disable-shared"
-if "$BUILD"/scripts/test-libmpv ; then
-    OPTIONS="$OPTIONS --with-pic"
-fi
+OPTIONS="--enable-static --disable-shared --with-http=no --with-ftp=no --with-python=no"
 
 case "$PKG_CONFIG_PATH" in
   '')
@@ -26,6 +23,5 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
-cd "$BUILD"/fribidi
-./autogen.sh
-./configure --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
+cd "$BUILD"/libxml2
+./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
