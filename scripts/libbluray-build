@@ -2,4 +2,4 @@
 set -e
 
 make -C libbluray install "$@"
-cp libbluray/src/libbluray/hdmv/mobj_parse.h libbluray/src/libbluray/bdnav/mpls_parse.h libbluray/src/libbluray/bdnav/uo_mask_table.h build_libs/include/libbluray
+cp libbluray/src/libbluray/hdmv/mobj_data.h libbluray/src/libbluray/bdnav/mpls_data.h libbluray/src/libbluray/bdnav/uo_mask_table.h build_libs/include/libbluray
