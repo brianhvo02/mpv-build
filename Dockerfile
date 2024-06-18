@@ -12,7 +12,9 @@ EOF
 RUN <<EOF
     emsdk install tot
     emsdk activate tot
-    npm --prefix "$EMSDK/upstream/emscripten" install
+    rm -rf "$EMSDK/upstream/emscripten"
+    git clone "https://github.com/brianhvo02/emscripten.git" "$EMSDK/upstream/emscripten"
+    "$EMSDK/upstream/emscripten/bootstrap"
 EOF
 
 COPY . .
@@ -27,7 +29,9 @@ RUN <<EOF
     apt-get install -y pkg-config
     emsdk install tot
     emsdk activate tot
-    npm --prefix "$EMSDK/upstream/emscripten" install
+    rm -rf "$EMSDK/upstream/emscripten"
+    git clone "https://github.com/brianhvo02/emscripten.git" "$EMSDK/upstream/emscripten"
+    "$EMSDK/upstream/emscripten/bootstrap"
 EOF
 COPY --from=build /src/build_libs /src/build_libs
 ENTRYPOINT ["bash"]
